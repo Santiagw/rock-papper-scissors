@@ -48,8 +48,5 @@ function PlayGame() {
     }
 
 
-    console.log(playRound(getHumanChoice(), getComputerChoice()))
 
 }
-
-PlayGame()
