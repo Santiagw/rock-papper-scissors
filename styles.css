@@ -4,12 +4,13 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: url(../scripts/assets/papperBG.PNG);
+    background-image: url(./assets/papperBG.PNG);
     font-family: 'Gloria Hallelujah';
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
     /* height: 100%;
     overflow: hidden */
 }
@@ -23,7 +24,7 @@ body{
     font-size: 2em;
 }
 
-#buttons-container{
+.buttons-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
