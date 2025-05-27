@@ -18,41 +18,55 @@ function getHumanChoice() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
         humanScore++
-        console.log(`player scrore: ${humanScore}
-            Computer score: ${ComputerScore}`)
         humanScoreDisplay.textContent = "human: " + humanScore
         winnerDisplay.textContent = "human wins and gets one point"
+        verifyWinner()
         return `You win ${playerSelection} Beats ${computerSelection}`;
     }
     else if (playerSelection === "papper" && computerSelection === "rock") {
         humanScore++
-        console.log(`player scrore: ${humanScore}
-            Computer score: ${ComputerScore}`)
         humanScoreDisplay.textContent = "human: " + humanScore
         winnerDisplay.textContent = "human wins and gets one point"
+        verifyWinner()
 
         return `You win ${playerSelection} Beats ${computerSelection}`;
     }
     else if (playerSelection === "scissors" && computerSelection === "papper") {
         humanScore++
-        console.log(`player scrore: ${humanScore}
-            Computer score: ${ComputerScore}`)
         humanScoreDisplay.textContent = "human: " + humanScore
         winnerDisplay.textContent = "human wins and gets one point"
+        verifyWinner()
 
         return `You win ${playerSelection} Beats ${computerSelection}`;
+    } else if (ComputerScore === 5) {
+
     }
-    else if (playerSelection === computerSelection) return `It is a Tie!`;
+    else if (playerSelection === computerSelection) winnerDisplay.textContent = `It is a Tie!`;
     else {
         ComputerScore++
-        console.log(`player scrore: ${humanScore}
-            Computer score: ${ComputerScore}`)
         computerScoreDisplay.textContent = "computer: " + ComputerScore
         winnerDisplay.textContent = "computer wins and gets one point"
+        verifyWinner()
 
         return `You lose ${computerSelection} Beats ${playerSelection}`;
     }
 
+}
+
+function verifyWinner() {
+    if (humanScore === 5) {
+        humanScore = 0
+        ComputerScore = 0
+        humanScoreDisplay.textContent = "human: " + humanScore
+
+        winnerDisplay.textContent = "human wins the game"
+    } else if (ComputerScore === 5) {
+        ComputerScore = 0
+        humanScore = 0
+        computerScoreDisplay.textContent = "computer: " + ComputerScore
+
+        winnerDisplay.textContent = "computer wins the game"
+    }
 }
 
 let humanScore = 0
@@ -61,20 +75,25 @@ let ComputerScore = 0
 const gameContainer = document.querySelector("#container")
 const resultsContainer = document.querySelector(".results")
 
-const humanScoreDisplay = document.querySelector(".humanScore")
-const computerScoreDisplay = document.querySelector(".computerScore")
-const winnerDisplay = document.querySelector(".winner")
-
 const rockBTN = document.createElement("button")
 const papperBTN = document.createElement("button")
 const scissorsBTN = document.createElement("button")
+
+const humanScoreDisplay = document.createElement("p")
+humanScoreDisplay.classList.add("humanScore")
+
+const computerScoreDisplay = document.createElement("p")
+computerScoreDisplay.classList.add("computerScore")
+
+const winnerDisplay = document.createElement("h1")
+winnerDisplay.classList.add("winner")
+
 
 rockBTN.textContent = "rock"
 papperBTN.textContent = "papper"
 scissorsBTN.textContent = "scissors"
 
 
-//attach an event listener to every button that calls the plaround function with its respective player selection
 
 rockBTN.addEventListener("click", () => {
     playRound("rock", getComputerChoice())
@@ -88,4 +107,5 @@ scissorsBTN.addEventListener("click", () => {
     playRound("scissors", getComputerChoice())
 });
 
+resultsContainer.append(humanScoreDisplay, computerScoreDisplay, winnerDisplay)
 gameContainer.append(rockBTN, papperBTN, scissorsBTN)
