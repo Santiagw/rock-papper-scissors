@@ -82,6 +82,11 @@ const resultsContainer = document.querySelector(".results")
 const rockBTN = document.createElement("button")
 const papperBTN = document.createElement("button")
 const scissorsBTN = document.createElement("button")
+const btnContainer = document.createElement("div")
+
+const rockImg = document.createElement("img");
+const papperImg = document.createElement("img");
+const scissorsImg = document.createElement("img");
 
 const humanScoreDisplay = document.createElement("p")
 humanScoreDisplay.classList.add("humanScore")
@@ -93,11 +98,27 @@ const winnerDisplay = document.createElement("h1")
 winnerDisplay.classList.add("winner")
 
 
-rockBTN.textContent = "rock"
-papperBTN.textContent = "papper"
-scissorsBTN.textContent = "scissors"
+rockBTN.appendChild(rockImg)
+papperBTN.appendChild(papperImg)
+scissorsBTN.appendChild(scissorsImg)
+
+rockBTN.classList.add("button")
+papperBTN.classList.add("button")
+scissorsBTN.classList.add("button")
+
+btnContainer.classList.add("buttons-container")
 
 
+rockImg.classList.add("image");
+papperImg.classList.add("image");
+scissorsImg.classList.add("image");
+
+rockImg.src = "https://parkercon.github.io/rock-paper-scissors/images/rock.png"
+papperImg.src = "https://parkercon.github.io/rock-paper-scissors/images/paper.png"
+scissorsImg.src = "https://parkercon.github.io/rock-paper-scissors/images/scissors.png"
+
+computerScoreDisplay.textContent = "computer: " + ComputerScore
+humanScoreDisplay.textContent = "human: " + humanScore
 
 rockBTN.addEventListener("click", () => {
     playRound("rock", getComputerChoice())
@@ -111,5 +132,6 @@ scissorsBTN.addEventListener("click", () => {
     playRound("scissors", getComputerChoice())
 });
 
+btnContainer.append(rockBTN, papperBTN, scissorsBTN)
+gameContainer.insertBefore(btnContainer, resultsContainer)
 resultsContainer.append(humanScoreDisplay, computerScoreDisplay, winnerDisplay)
-gameContainer.append(rockBTN, papperBTN, scissorsBTN)
