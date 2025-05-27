@@ -58,12 +58,16 @@ function verifyWinner() {
         humanScore = 0
         ComputerScore = 0
         humanScoreDisplay.textContent = "human: " + humanScore
+        computerScoreDisplay.textContent = "computer: " + ComputerScore
+
 
         winnerDisplay.textContent = "human wins the game"
     } else if (ComputerScore === 5) {
         ComputerScore = 0
         humanScore = 0
         computerScoreDisplay.textContent = "computer: " + ComputerScore
+        humanScoreDisplay.textContent = "human: " + humanScore
+
 
         winnerDisplay.textContent = "computer wins the game"
     }
